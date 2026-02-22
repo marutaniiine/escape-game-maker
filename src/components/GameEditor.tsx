@@ -48,6 +48,7 @@ export default function GameEditor({ game, onChange, onPlay }: Props) {
   const handleShare = () => {
     const url = getShareUrl(game);
     setShareUrl(url);
+    alert('共有URLを生成しました。下にスクロールしてURLを確認してください。');
   };
 
   const handleCopy = async () => {
@@ -158,7 +159,12 @@ export default function GameEditor({ game, onChange, onPlay }: Props) {
           )}
         </div>
         <div className="footer-right">
-          <button onClick={handleShare} className="btn-secondary" disabled={!isValid}>
+          <button
+            onClick={handleShare}
+            className="btn-secondary"
+            disabled={!isValid}
+            title={!isValid ? 'ゲーム設定を完成させてください' : '共有URLを生成'}
+          >
             🔗 共有URLを生成
           </button>
           <button onClick={onPlay} className="btn-primary" disabled={!isValid}>
